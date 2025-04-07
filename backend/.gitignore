@@ -1,0 +1,21 @@
+# Python 가상환경
+.venv/
+venv/
+
+# PyCharm 프로젝트 설정 폴더
+.idea/
+
+# Python __pycache__ 및 bytecode 파일
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 로그 파일, 환경 변수 파일
+*.log
+.env
+
+# 장고 마이그레이션 캐시
+*.sqlite3
+*.db
+
+

@@ -37,17 +37,17 @@ jobs:
 
       - name: Create .env
         run: |
-          echo "ENV=production" >> .env.production
-          echo "DEBUG=False" >> .env.production
-          echo "POSTGRES_DB=${{ secrets.DB_NAME }}" >> .env.production
-          echo "POSTGRES_USER=${{ secrets.DB_USER }}" >> .env.production
-          echo "POSTGRES_PASSWORD=${{ secrets.DB_PASS }}" >> .env.production
-          echo "DATABASE_URL=postgresql://${{ secrets.DB_USER }}:${{ secrets.DB_PASS }}@db:5432/${{ secrets.DB_NAME }}" >> .env.production
-          echo "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}" >> .env.production
+          echo "ENV=production" >> .env
+          echo "DEBUG=False" >> .env
+          echo "POSTGRES_DB=${{ secrets.DB_NAME }}" >> .env
+          echo "POSTGRES_USER=${{ secrets.DB_USER }}" >> .env
+          echo "POSTGRES_PASSWORD=${{ secrets.DB_PASS }}" >> .env
+          echo "DATABASE_URL=postgresql://${{ secrets.DB_USER }}:${{ secrets.DB_PASS }}@db:5432/${{ secrets.DB_NAME }}" >> .env
+          echo "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}" >> .env
 
       - name: Upload .env on EC2
         run: |
-          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa .env.production ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/ubuntu/appbucket/backend/.env.production
+          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa .env ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/ubuntu/appbucket/backend/.env
 
       - name: SSH into EC2 and restart Docker Compose
         run: |

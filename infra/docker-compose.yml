@@ -6,25 +6,21 @@ services:
     container_name: postgres
     restart: always
     env_file:
-      - .env.production
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      - .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - backend
 
   web:
+    env_file:
+      - .env
     build:
       context: ../backend # backend 폴더를 build context로
       dockerfile: Dockerfile # ../backend/Dockerfile
     image: ${DOCKER_USERNAME}/backend:latest
     container_name: backend
     restart: always
-    env_file:
-      - .env.production
     ports:
       - "80:8000" # 도커 외부 80 → 내부 8000
     depends_on:

@@ -27,6 +27,7 @@ jobs:
           echo "POSTGRES_USER=${{ secrets.DB_USER }}" >> .env.production
           echo "POSTGRES_PASSWORD=${{ secrets.DB_PASS }}" >> .env.production
           echo "DATABASE_URL=postgresql://${{ secrets.DB_USER }}:${{ secrets.DB_PASS }}@db:5432/${{ secrets.DB_NAME }}" >> .env.production
+          echo "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}" >> .env.production
 
       - name: Upload .env on EC2
         run: |

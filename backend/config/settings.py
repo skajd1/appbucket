@@ -22,7 +22,7 @@ if os.path.exists(env_path):
 # 이후 설정은 동일
 ENV = env('ENV')
 DEBUG = env('DEBUG')
-# SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY')
 # ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
 DATABASES = {
@@ -30,5 +30,31 @@ DATABASES = {
 }
 
 INSTALLED_APPS = [
-    'users'
+    # 'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.staticfiles',
+    'users',
+    'apps',
+    'deployments',
+    'rest_framework',
+
+]
+# settings.py
+STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'users.User'  # 앱 이름에 맞게 수정
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ]
+}
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+    },
 ]

@@ -11,16 +11,13 @@ env = environ.Env(
     DEBUG=(bool, True)
 )
 
-# ENV 값에 따라 .env 파일 경로 분기
-ENVIRONMENT = os.getenv("ENV", "local")
-env_path = os.path.join(BASE_DIR,".env.production") if ENVIRONMENT == "production" else os.path.join(BASE_DIR,".env")
+ENVIRONMENT = env('ENV')
+env_path = os.path.join(BASE_DIR, ".env")
 
-# .env 또는 .env.production 로드
+# .env 로드
 if os.path.exists(env_path):
     environ.Env.read_env(env_path)
 
-# 이후 설정은 동일
-ENV = env('ENV')
 DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
 # ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])

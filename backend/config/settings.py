@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 # settings.py
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 AUTH_USER_MODEL = 'users.User'  # 앱 이름에 맞게 수정
 

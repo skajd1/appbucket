@@ -29,8 +29,10 @@ DATABASES = {
 INSTALLED_APPS = [
     # 'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.staticfiles',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
     'bucket',
@@ -39,6 +41,8 @@ INSTALLED_APPS = [
 ]
 # settings.py
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 AUTH_USER_MODEL = 'users.User'  # 앱 이름에 맞게 수정
 

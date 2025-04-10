@@ -44,6 +44,7 @@ jobs:
           echo "POSTGRES_PASSWORD=${{ secrets.DB_PASS }}" >> .env
           echo "DATABASE_URL=postgresql://${{ secrets.DB_USER }}:${{ secrets.DB_PASS }}@db:5432/${{ secrets.DB_NAME }}" >> .env
           echo "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}" >> .env
+          echo "SECRET_KEY=${{ secrets.DJANGO_SECRET }}" >> .env
 
       - name: Upload .env on EC2
         run: |

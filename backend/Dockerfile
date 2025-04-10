@@ -21,7 +21,8 @@ COPY . .
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# Django static 파일 수집 및 DB 마이그레이션
+# Django static 파일 수집
+RUN python manage.py collectstatic --noinput
 
 # Uvicorn 실행
 CMD ["sh", "-c", "python manage.py migrate && uvicorn config.asgi:application --host 0.0.0.0 --port 8000"]
